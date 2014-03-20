@@ -1,14 +1,14 @@
-DROP DATABASE IF EXISTS Sysmed;
-CREATE DATABASE Sysmed;
+﻿DROP DATABASE IF EXISTS sysmed;
+CREATE DATABASE sysmed;
 
-USE Sysmed;
+USE sysmed;
 
 DROP TABLE IF EXISTS Persona;
 DROP TABLE IF EXISTS Paciente;
 DROP TABLE IF EXISTS tipoUsuario;
 DROP TABLE IF EXISTS Horario;
 DROP TABLE IF EXISTS Medico;
-DROP TABLE IF EXISTS Secretaria;
+DROP TABLE IF EXISTS Usuario;
 DROP TABLE IF EXISTS Especialidad;
 DROP TABLE IF EXISTS Historial;
 DROP TABLE IF EXISTS Cita;
@@ -62,16 +62,14 @@ CREATE TABLE Usuario(
 idUsuario INT(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 idPersona INT(4) NOT NULL REFERENCES Persona.idPersona,
 idTipoUsuario INT(4) NOT NULL REFERENCES tipoUsuario.idTipoUsuario,
-Contrase?a VARCHAR(20) NOT NULL,
+Contrasena VARCHAR(20) NOT NULL,
 Estado VARCHAR(15) NOT NULL
 );
-
 
 CREATE TABLE Historial(
 idHistorial INT(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 idMedico INT(4) REFERENCES Medico.idMedico,
 idUsuario INT(4) REFERENCES Usuario.idUsuario,
-idSecretaria INT(4) REFERENCES Secretaria.idSecretaria,
 Estado VARCHAR(15),
 Motivo VARCHAR(50),
 Fecha VARCHAR(20)
@@ -89,7 +87,6 @@ HoraActual VARCHAR(20) NOT NULL,
 Estado VARCHAR(15) NOT NULL
 );
 
-
 INSERT INTO tipoUsuario(idTipoUsuario, Descripcion)VALUES(0001,'Administrador');
 INSERT INTO tipoUsuario(Descripcion)VALUES('Usuario');
 
@@ -101,22 +98,32 @@ INSERT INTO Especialidad(idEspecialidad, Descripcion)VALUES(0001, 'Medico Genera
 INSERT INTO Especialidad(Descripcion)VALUES('Medico Cirujano');
 INSERT INTO Especialidad(Descripcion)VALUES('Cardiologo');
 
-INSERT INTO Persona(idPersona,Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES(0001,'Manuel','Aguilar','Juarez #3','123456789','manuel@',25,'M','01/01/2013');
-INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES('Jose','Perez','Juarez #4','123456789','jose@',25,'M','10/04/2013');
-INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES('Amanda','Martinez','Juarez #5','123456789','amanda@',26,'F','01/01/2014');
-INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES('Ana','Vazquez','Juarez #6','123456789','ana@',27,'F','05/10/2012');
-INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES('Fernando','Serrato','Juarez #7','123456789','fer@',28,'M','09/05/2010');
-INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES('Guadalupe','Rodriguez','Juarez #8','123456789','guada@',25,'M','01/01/2013');
-INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES('Yadira','Morales','Juarez #9','123456789','jady@',27,'F','15/08/2010');
-INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)VALUES('Juan Ramon','Calvillo','Juarez #10','123456789','juanR@',20,'M','01/06/2012');
+INSERT INTO Persona(idPersona,Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES(0001,'Manuel','Aguilar','Juarez #3','123456789','manuel@',25,'M','01/01/2013');
+INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES('Jose','Perez','Juarez #4','123456789','jose@',25,'M','10/04/2013');
+INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES('Amanda','Martinez','Juarez #5','123456789','amanda@',26,'F','01/01/2014');
+INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES('Ana','Vazquez','Juarez #6','123456789','ana@',27,'F','05/10/2012');
+INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES('Fernando','Serrato','Juarez #7','123456789','fer@',28,'M','09/05/2010');
+INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES('Guadalupe','Rodriguez','Juarez #8','123456789','guada@',25,'M','01/01/2013');
+INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES('Yadira','Morales','Juarez #9','123456789','jady@',27,'F','15/08/2010');
+INSERT INTO Persona(Nombre,Apellido,Direccion,Telefono,eMail,Edad,Sexo,FechaRegistro)
+VALUES('Juan Ramon','Calvillo','Juarez #10','123456789','juanR@',20,'M','01/06/2012');
 
 INSERT INTO Medico(idMedico,idPersona,idEspecialidad,Cedula,Estado)VALUES(0001,0001,0001,'MANU0002','Alta');
 INSERT INTO Medico(idPersona,idEspecialidad,Cedula,Estado)VALUES(0003,0002,'AMAU0002','Alta');
 INSERT INTO Medico(idPersona,idEspecialidad,Cedula,Estado) VALUES (0005,0003,'FERU0002','Alta');
 INSERT INTO Medico(idPersona,idEspecialidad,Cedula,Estado) VALUES (0007,0001,'YADU0002','Baja');
 
-INSERT INTO Usuario(idUsuario,idPersona,idTipoUsuario,Contrase?a,Estado) VALUES (0001,0002,0001,'jose','Alta');
-INSERT INTO Usuario(idPersona,idTipoUsuario,Contrase?a,Estado) VALUES (0004,0002,'ana','Alta');
+INSERT INTO Usuario(idUsuario,idPersona,idTipoUsuario,Contrasena,Estado) 
+VALUES (0001,0002,0001,'jose','Alta');
+INSERT INTO Usuario(idPersona,idTipoUsuario,Contrasena,Estado) 
+VALUES (0004,0002,'ana','Alta');
 
 INSERT INTO Paciente(idPaciente,idPersona) VALUES (0001,0006);
 INSERT INTO Paciente(idPersona) VALUES (0008);
