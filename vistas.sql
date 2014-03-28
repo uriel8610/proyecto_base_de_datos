@@ -10,7 +10,7 @@ FROM Persona, Medico, Especialidad
 WHERE Persona.idPersona = Medico.idMedico AND Especialidad.idEspecialidad = Medico.idEspecialidad;
 
 CREATE VIEW sysmed.vista_paciente AS
-SELECT Persona.Nombre, Persona.Apellido, Persona.idPersona, Paciente.idPaciente
+SELECT Persona.Nombre, Persona.Apellido
 FROM Persona, Paciente
 WHERE Persona.idPersona = Paciente.idPaciente;
 
