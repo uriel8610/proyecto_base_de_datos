@@ -152,10 +152,10 @@ INSERT INTO Paciente(idPersona) VALUES (0012);
 INSERT INTO Cita(idCita, idMedico, idPaciente, idHorario, idUsuario, Fecha, FechaActual, HoraActual, Estado)
 VALUES(0001, 0001, 0001, 0001, 0001, '17/03/2014','15/03/2014', '10:00', 'realizada');
 INSERT INTO Cita(idMedico, idPaciente, idHorario, idUsuario, Fecha, FechaActual, HoraActual, Estado)
-VALUES(0004, 0009, 0003, 0001, '20/03/2014','18/03/2014', '13:00', 'pendiente');
+VALUES(0004, 0003, 0003, 0001, '20/03/2014','18/03/2014', '13:00', 'pendiente');
 INSERT INTO Cita(idMedico, idPaciente, idHorario, idUsuario, Fecha, FechaActual, HoraActual, Estado)
-VALUES(0003, 0011, 0004, 0002, '20/03/2014','18/03/2014', '12:00', 'pendiente');
+VALUES(0003, 004, 0004, 0002, '20/03/2014','18/03/2014', '12:00', 'pendiente');
 INSERT INTO Cita(idMedico, idPaciente, idHorario, idUsuario, Fecha, FechaActual, HoraActual, Estado)
-VALUES(0002, 0012, 0007, 0002, '16/01/2014','15/03/2014', '15:00', 'realizada');
+VALUES(0002, 005, 0007, 0002, '16/01/2014','15/03/2014', '15:00', 'realizada');
 INSERT INTO Cita(idMedico, idPaciente, idHorario, idUsuario, Fecha, FechaActual, HoraActual, Estado)
 VALUES(0001, 0002, 0006, 0003, '15/01/2014','14/03/2014', '06:00', 'cancelada');
