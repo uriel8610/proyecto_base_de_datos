@@ -1,4 +1,4 @@
-﻿USE sysmed;
+USE sysmed;
 
 DROP VIEW IF EXISTS vista_medico;
 DROP VIEW IF EXISTS vista_usuario;
